@@ -25,8 +25,8 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Herramienta o modelo** | Claude (Claude Opus 5.5) en claude.ai, con acceso de escritura al repositorio `PatriciaL/tfm-embalses`. |
 | **Entrada relevante** | Diagnóstico F0, decisiones D-01 a D-13 y resultados reales de las pruebas de conectividad y lectura (E-01 a E-05). Sin secretos ni datos personales. |
 | **Salida utilizada** | Notebooks `00`–`04`, módulo `transforms.py` (lógica pura) y `common.py` (configuración y registro), 11 pruebas unitarias, README, CLAUDE.md, definición del Job y CSV de referencia DOCa con 3 añadas (2021–2023) tomadas de prensa y pendientes de verificar en la fuente oficial. |
-| **Verificación** | Hecha: las 11 pruebas pasan en local (`pytest`), cubriendo coma decimal, `Ip`, control de esquema, estados de calidad, deduplicación, idempotencia y Winkler; todos los notebooks compilan. Pendiente: primera ejecución en Databricks (los notebooks no se han ejecutado todavía en la plataforma). |
-| **Decisión humana** | Pendiente de la revisión de Patri tras la primera ejecución. |
+| **Verificación** | Hecha: las 11 pruebas pasan en local (`pytest`), cubriendo coma decimal, `Ip`, control de esquema, estados de calidad, deduplicación, idempotencia y Winkler. Primera ejecución completa en Databricks el 24/10 (18:58–19:15): bronze, silver, 14 controles de calidad superados y gold publicado (evidencias E-06 a E-15). Única corrección necesaria: reinicio de Python tras `%pip` (INC-03). |
+| **Decisión humana** | Aceptado tras la ejecución en la plataforma. Pendiente de contrastar con bibliografía que los valores de Winkler de Logroño (≈1.950–2.380 en 2022–2026) son coherentes. |
 
 **Hallazgo lateral:** las calificaciones DOCa del CSV de ejemplo heredado no coinciden con la tabla oficial del Consejo Regulador: **6 de sus 10 añadas (2015–2024) son erróneas** (2016, 2017, 2018, 2019, 2021 y 2022). Refuerza el hallazgo 1: los datos de ejemplo eran inventados.
 
