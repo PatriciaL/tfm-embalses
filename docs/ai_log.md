@@ -40,3 +40,14 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Salida utilizada** | 2001–2025 desde la web oficial (riojawine.com/es/doca-rioja/anadas/); 2000 desde una fuente secundaria (anadas-do.com), marcada con `tipo_fuente = secundaria` porque la web oficial no la mostraba en la primera página. |
 | **Verificación** | Automática: los datos 2001–2025 se leyeron directamente de la página oficial; cada fila conserva su URL de origen para poder auditarla. Sin contraste manual adicional. |
 | **Decisión humana** | 24/10, 18:54: aceptado tal cual por prioridad de tiempo. Límite declarado: la añada 2000 procede de una fuente secundaria. |
+
+## IA-004 · Gobierno y dashboard
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 24–25/10/2026, 19:35–00:06. Notebook de gobierno (comentarios, etiquetas, permisos) y dashboard Streamlit como Databricks App. |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) en claude.ai, con acceso de escritura al repositorio y al navegador integrado (solo lectura de la app). |
+| **Entrada relevante** | Decisiones D-07 y D-16, tablas gold y ops ya publicadas. Sin secretos ni datos personales. |
+| **Salida utilizada** | `pipeline/05_governance.py`, `app/app.py`, `app/app.yaml`, `app/requirements.txt` y `app/README.md`. |
+| **Verificación** | Gobierno: 14 tablas con comentario y etiquetas (E-18, E-19), linaje revisado con un límite detectado (E-20, E-21). Permisos: el GRANT por código no dejó permiso efectivo (INC-06); se verificó con `SHOW GRANTS` y se corrigió desde Catalog Explorer (E-25, E-26). App: despliegue correcto tras hacer público el repo (INC-05, E-24); revisión en navegador el 25/10 00:06: KPIs, gráfico de campañas frente a DOCa, reserva del Ebro y pestaña de salud (4 ejecuciones OK, 14 controles, 0 fallos) cargan con datos reales. |
+| **Decisión humana** | Aceptado. Mejora menor pendiente: la tabla de ejecuciones muestra horas en UTC. |
