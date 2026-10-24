@@ -73,3 +73,14 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Salida utilizada** | Una celda Markdown "Celda N · …" antes de cada celda de código (qué hace, paso a paso y por qué) y comentarios en línea en los pasos clave. Resumen "En una frase" al inicio de cada notebook. |
 | **Verificación** | Automática: comparación del árbol sintáctico (AST) de cada notebook antes y después; el código ejecutable es idéntico en los seis, solo cambian los comentarios. Las 11 pruebas pasan (`pytest`). |
 | **Decisión humana** | Pendiente: revisión de la autora tras hacer Pull en Databricks. |
+
+## IA-007 · Documentación del entorno de IA y sección de la memoria
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 25/10/2026, 00:50–01:10. Documentar con qué entorno, skills, reglas y controles se ha trabajado con la IA, y hacerlo visible en la memoria (el máster es de AI Fluency). |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) en la app de Claude, con acceso al repositorio, al proyecto de Claude y a búsqueda web. |
+| **Entrada relevante** | Petición de la autora: documentar las skills y el resto del entorno. Registro de IA, decisiones, incidencias y los prompts de la autora en la sesión. Sin secretos ni datos personales. |
+| **Salida utilizada** | `docs/uso_ia.md` (entorno, skills, reglas de `CLAUDE.md`, prompts clave literales, límites, técnicas de verificación, errores de la IA y reparto de papeles) y nueva sección 7 de la memoria «Cómo se ha trabajado con la IA»; las secciones siguientes pasan a ser 8 y 9. Se actualiza el apartado 6.3 con el contraste de Winkler: el informe de índices bioclimáticos de AEMET da a Logroño 2.748 grados-día en 2021 (1 abr–30 sep, base 10 ºC), lo que hace plausibles los valores obtenidos. |
+| **Verificación** | Cada caso de error citado se comprobó contra `evidencias.md` (INC-02, INC-03, INC-05, INC-06). Memoria regenerada y revisada visualmente: 12 páginas. Fuente del contraste: repositorio.aemet.es (Indices_bioclimaticos_CAL2024.pdf). |
+| **Decisión humana** | Pendiente: revisión de la autora (en especial, que los prompts citados la representan). Resuelve la verificación pendiente de Winkler de IA-002. |

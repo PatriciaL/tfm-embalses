@@ -95,6 +95,7 @@ add(H1("1. Resumen y objetivo"),
     ["Gobierno: clasificación, etiquetas, linaje y permisos de solo lectura para el dashboard", "Fig. 5–7"],
     ["Operación: Job diario desatendido, registro de ejecuciones y 6 incidencias reales resueltas", "Fig. 8, 9 y tabla 5.2"],
     ["Dashboard de negocio y de salud del pipeline", "Fig. 10, 11"],
+    ["Uso de IA con reglas, controles y errores detectados", "Sección 7"],
   ], [6900, CW - 6900]),
 );
 
@@ -220,7 +221,7 @@ add(H1("6. Resultados y dashboard"),
   B("**Campaña 2026 en Logroño:** 202 mm de lluvia y **2.377 grados-día**, el valor más alto de la serie desde 2000 (región V, «cálida»)."),
   B("**Lectura descriptiva de la serie:** más lluvia no implica mejor calificación. 2024 fue la campaña más lluviosa (480 mm) y se calificó «Buena»; 2016 y 2022, de las más secas, «Muy buena»."),
   H2("6.3 Hipótesis, no resultados"),
-  B("Los grados-día de Logroño (≈ 1.950–2.380 en 2022–2026) parecen altos frente a la clasificación clásica de Rioja. Puede deberse al calentamiento reciente o a que una sola estación de valle no representa toda la DOCa: **no está contrastado con bibliografía**."),
+  B("Los grados-día de Logroño (≈ 1.950–2.380 en 2022–2026) parecen altos frente a la clasificación clásica de Rioja. **Contraste:** el informe de índices bioclimáticos de AEMET da a Logroño 2.748 grados-día en 2021 (1 de abril–30 de septiembre, base 10 ºC, calculados con máximas y mínimas), así que el orden de magnitud es plausible. La diferencia con la referencia clásica se explica por el periodo, el método de cálculo y el calentamiento reciente; una sola estación de valle sigue sin representar toda la DOCa."),
   B("Con 26 añadas calificadas no es posible establecer una relación estadística entre clima y calificación; por eso el indicador es descriptivo."),
   ...ia("Streamlit, Altair, databricks-sql-connector, Databricks Apps, SQL warehouse serverless.",
     "escribió la app y su configuración, y revisó la app desplegada en el navegador integrado (solo lectura).",
@@ -228,7 +229,36 @@ add(H1("6. Resultados y dashboard"),
 );
 
 // ---------------------------------------------------------------- 7
-add(H1("7. Justificación cuantitativa: horas y costes"),
+add(H1("7. Cómo se ha trabajado con la IA"),
+  P("Los recuadros de cada sección dicen qué hizo la IA en ese paso. Esta sección explica **con qué entorno, con qué reglas y con qué controles** se trabajó; el detalle está en docs/uso_ia.md y en el registro de uso de IA (IA-001 a IA-007)."),
+  H2("Entorno, skills e instrucciones"),
+  table(["Pieza", "Qué aporta al trabajo"], [
+    ["**Claude Opus 5.5** (Anthropic), en la app de Claude en modo agente", "Ejecuta tareas de varios pasos en un espacio de trabajo en la nube: escribe y prueba código, genera documentos y hace commits"],
+    ["**Proyecto de Claude** con la guía, el diagnóstico, las decisiones y las evidencias", "Contexto persistente: cada sesión parte de los requisitos y de lo ya decidido"],
+    ["**Conectores:** GitHub, Google Drive, búsqueda web y navegador integrado", "Repositorio, documentos de trabajo, verificación de fuentes públicas y revisión de la app (solo lectura)"],
+    ["**Skills de la plataforma:** docx y navegador integrado", "Instrucciones empaquetadas para generar esta memoria en Word y para usar el navegador con sus límites"],
+    ["**CLAUDE.md** del repositorio", "Las reglas que la IA cumple siempre: sin datos sintéticos ni respaldos silenciosos, trazabilidad por fila, nada se descarta sin rastro, pruebas antes de cada commit, sin secretos y registro de cada cambio con IA"],
+  ], [3900, CW - 3900]),
+  P(""),
+  P("Las tres primeras reglas de CLAUDE.md traducen los hallazgos del diagnóstico: son justo los errores que el pipeline heredado cometía y que una IA podría reintroducir sin darse cuenta. Los encargos siguieron las cinco piezas de la guía (§8): una tarea concreta cada vez, el contexto del proyecto, los límites de CLAUDE.md, un formato de salida definido y una verificación asociada. Los prompts clave se guardan literales en docs/uso_ia.md."),
+  H2("Límites y verificación"),
+  B("**La IA no ejecuta en Databricks ni maneja credenciales:** la autora ejecuta cada celda, crea el Job, la app y los permisos, y aporta la captura. Se dejó de automatizar la consola desde el navegador al aparecer el aviso de control automatizado."),
+  B("**Cada salida tiene su comprobación:** pruebas unitarias, ejecución real con captura fechada, los 14 controles de calidad, contraste con fuente oficial (DOCa, AEMET) y, para los comentarios de los notebooks, comparación del árbol sintáctico para asegurar que el código no cambió."),
+  H2("Dónde se equivocó la IA"),
+  table(["Caso", "Qué pasó", "Cómo se detectó"], [
+    ["Permisos de la app (INC-06)", "El GRANT propuesto se ejecutó sin error, pero sin efecto", "SHOW GRANTS vacío; corregido desde Catalog Explorer"],
+    ["Límite de 8 MiB (INC-02) y reinicio tras %pip (INC-03)", "Límites de la plataforma no anticipados", "Errores en la primera ejecución real"],
+    ["Repositorio privado (INC-05)", "Se asumió que la app podría leerlo", "Error «no credential» al desplegar"],
+    ["Valores de Winkler", "Más altos que las referencias clásicas de Rioja", "Contraste con un informe de AEMET antes de aceptarlos"],
+  ], [2900, 3300, CW - 6200]),
+  P(""),
+  ...ia("Claude Opus 5.5 en la app de Claude; proyecto de Claude; conectores de GitHub y Google Drive; búsqueda web; navegador integrado; skills docx y navegador.",
+    "planificar las fases, escribir código y documentación, verificar fuentes públicas y proponer soluciones a las incidencias.",
+    "elegir el caso, el alcance y las fuentes; tomar las decisiones D-01 a D-18; ejecutar en la plataforma; detectar las incidencias y aceptar o rechazar cada salida con su evidencia."),
+);
+
+// ---------------------------------------------------------------- 8
+add(H1("8. Justificación cuantitativa: horas y costes"),
   P("**Tarea comparada:** llevar un pipeline heredado de una fuente pública a producción controlada (diagnóstico, fuentes reales, normalización, calidad, gobierno, operación, dashboard y documentación). **Criterio de resultado correcto:** los 14 controles superados, el Job operando y el dashboard con datos reales."),
   table(["Bloque", "Sin IA (estimación)", "Con IA: ejecución + revisión humana"], [
     ["Diagnóstico del código heredado", "2,5 h", "0,3 h"],
@@ -253,12 +283,12 @@ add(H1("7. Justificación cuantitativa: horas y costes"),
   P("**Límites.** El ahorro de tiempo es más sólido que el monetario, que depende de la tarifa y de la frecuencia supuestas. El ahorro no es gratuito: hubo 6 incidencias que la IA no anticipó y que exigieron ejecución y criterio humano, y su propia propuesta de permisos por código falló en silencio (INC-06). En plataformas de pago habría que sumar el coste de cómputo, aquí nulo por usar Free Edition."),
 );
 
-// ---------------------------------------------------------------- 8
-add(H1("8. Conclusiones y límites"),
+// ---------------------------------------------------------------- 9
+add(H1("9. Conclusiones y límites"),
   H2("Qué queda demostrado"),
   B("Que un pipeline que «funcionaba» puede estar produciendo datos no verificables, y que diagnosticarlo con evidencia (hallazgos confirmados con datos reales) es el primer paso de cualquier proyecto de datos."),
   B("Un flujo de datos reales con origen trazable por fila, cuarentena con motivo, 14 controles repetibles que bloquean la publicación, gobierno con exposición mínima y operación diaria registrada."),
-  B("Un uso de IA trazable: 4 entradas en el registro de IA, cada una con su verificación y con la decisión humana explícita."),
+  B("Un uso de IA trazable y con reglas: un CLAUDE.md que fija lo que la IA no puede hacer, 7 entradas en el registro de IA con su verificación y la decisión humana explícita, y los casos en que la IA se equivocó, detectados y corregidos (sección 7)."),
   H2("Qué no queda demostrado"),
   B("La línea base manual es estimada, no medida."),
   B("La relación entre clima y calificación DOCa: el indicador es descriptivo."),
@@ -277,7 +307,8 @@ add(H1("Anexo · Documentación y reproducibilidad"),
     ["Diagnóstico del pipeline heredado", "docs/diagnostico.md"],
     ["Registro de decisiones (D-01 a D-18)", "docs/decisiones.md"],
     ["Índice de evidencias e incidencias (E-01 a E-26, INC-01 a INC-06)", "docs/evidencias.md"],
-    ["Registro de uso de IA (IA-001 a IA-004)", "docs/ai_log.md"],
+    ["Registro de uso de IA (IA-001 a IA-007)", "docs/ai_log.md"],
+    ["Entorno de IA, skills, reglas y prompts clave", "docs/uso_ia.md y CLAUDE.md"],
     ["Definición del Job", "jobs/job_tfm_embalses.md"],
   ], [4300, CW - 4300]),
 );
