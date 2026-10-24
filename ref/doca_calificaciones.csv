@@ -1,0 +1,8 @@
+# Calificación oficial de añadas del Consejo Regulador DOCa Rioja.
+# Dato de referencia mantenido a mano (cambia una vez al año). Cada fila con su fuente.
+# Valores admitidos: Excelente, Muy Buena, Buena, Normal, Mediana, Deficiente
+# PENDIENTE: completar 2000-2020, 2024 y 2025 desde la fuente oficial (riojawine.com) y verificar las ya cargadas.
+anyada,calificacion,fuente_url,fecha_consulta
+2021,Muy Buena,https://www.agronewscastillayleon.com/rioja-califica-como-muy-buena-su-cosecha-de-2021,2026-10-24
+2022,Muy Buena,https://www.agronewscastillayleon.com/rioja-califica-como-muy-buena-su-cosecha-de-2022/,2026-10-24
+2023,Muy Buena,https://forbes.es/economia/478880/el-consejo-regulador-de-la-doca-rioja-califica-como-muy-buena-su-cosecha-de-2023/,2026-10-24
