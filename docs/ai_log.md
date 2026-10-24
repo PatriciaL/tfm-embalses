@@ -62,3 +62,14 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Salida utilizada** | Borrador de 11 páginas con 11 figuras con pie, siguiendo la estructura de la guía (§5); recuadro "Stack · Rol de la IA · Decisión humana" en cada sección. Las horas sin IA son una estimación declarada y el coste de la suscripción es un supuesto pendiente de confirmar. |
 | **Verificación** | Renderizado a PDF y revisión visual de todas las páginas. Pendiente: revisión de contenido por la autora y completar el historial de ejecuciones (tabla 5.3) con las cargas del 25, 27–28 y 29/10. |
 | **Decisión humana** | Pendiente. |
+
+## IA-006 · Comentarios didácticos en los notebooks
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 25/10/2026, 00:35–00:50. Comentar los notebooks 00–05 explicando qué hace cada celda en lenguaje sencillo, para que la autora pueda entender y defender el código. |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) en la app de Claude, con acceso de escritura al repositorio. |
+| **Entrada relevante** | Los seis notebooks del pipeline y la petición de la autora: "comentar los notebooks explicando qué hace cada celda, también de forma fácil". Sin secretos ni datos personales. |
+| **Salida utilizada** | Una celda Markdown "Celda N · …" antes de cada celda de código (qué hace, paso a paso y por qué) y comentarios en línea en los pasos clave. Resumen "En una frase" al inicio de cada notebook. |
+| **Verificación** | Automática: comparación del árbol sintáctico (AST) de cada notebook antes y después; el código ejecutable es idéntico en los seis, solo cambian los comentarios. Las 11 pruebas pasan (`pytest`). |
+| **Decisión humana** | Pendiente: revisión de la autora tras hacer Pull en Databricks. |

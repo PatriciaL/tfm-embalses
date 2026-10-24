@@ -2,18 +2,38 @@
 # MAGIC %md
 # MAGIC # 05 · Gobierno — clasificación, documentación y exposición mínima
 # MAGIC
-# MAGIC Se ejecuta **una vez** (y de nuevo si cambian tablas). Es idempotente.
+# MAGIC **En una frase:** pone "etiqueta y manual de instrucciones" a cada tabla y decide quién
+# MAGIC puede ver qué.
+# MAGIC
+# MAGIC Se ejecuta **una vez** (y de nuevo si cambian tablas). Es idempotente. No forma parte del Job diario.
 # MAGIC
 # MAGIC | Aspecto | Qué se hace | Dónde se ve |
 # MAGIC |---|---|---|
 # MAGIC | Clasificación | Etiquetas `clasificacion`, `capa`, `fuente`, `datos_personales` en cada tabla | Catalog Explorer › tabla › Tags |
 # MAGIC | Documentación | Comentario de tabla y de las columnas clave | Catalog Explorer › tabla › Overview |
-# MAGIC | Exposición | El dashboard solo lee `gold` y `ops` (permiso `SELECT`), nunca bronze ni quarantine | `SHOW GRANTS` (al final) |
+# MAGIC | Exposición | El dashboard solo lee `gold`, `ops` y `ref` (permiso `SELECT`), nunca bronze ni quarantine | `SHOW GRANTS` (al final) |
 # MAGIC | Linaje | Unity Catalog lo registra solo al ejecutar los notebooks | Catalog Explorer › tabla › Lineage |
 # MAGIC
 # MAGIC **Datos personales:** ninguna fuente contiene datos personales (embalses, meteorología y
 # MAGIC calificaciones de añada). Se declara explícitamente con la etiqueta `datos_personales = no`
 # MAGIC y como límite en la memoria: la propagación de supresión/consentimiento no aplica.
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Celda 1 · Comentarios y etiquetas de las 14 tablas
+# MAGIC - **`TABLAS`**: el inventario de todas las tablas del proyecto con su capa, su fuente y una
+# MAGIC   descripción en lenguaje claro. Es, en la práctica, el catálogo de datos del proyecto.
+# MAGIC - **`COMENTARIOS_COLUMNA`**: explicación de las columnas que más dudas generan (cómo se
+# MAGIC   calcula el % de capacidad, qué significa "Ip", cómo se calcula Winkler…).
+# MAGIC - **`sql_txt`**: escapa comillas y barras para que un texto con apóstrofo no rompa el SQL.
+# MAGIC - **El bucle**, para cada tabla que exista:
+# MAGIC   1. Le pone su comentario (`COMMENT ON TABLE`).
+# MAGIC   2. Le pone las etiquetas (`SET TAGS`): `clasificacion = publico`, `capa`, `fuente`,
+# MAGIC      `datos_personales = no` y `proyecto`. Si la plataforma no admite etiquetas, lo anota y sigue.
+# MAGIC   3. Comenta sus columnas clave.
+# MAGIC - Al final muestra una tabla resumen con lo aplicado a cada tabla.
+# MAGIC - El widget `principal_app` se usa en la celda 2.
 
 # COMMAND ----------
 
@@ -60,6 +80,7 @@ COMENTARIOS_COLUMNA = {
 }
 
 def sql_txt(x: str) -> str:
+    # Escapa barras y comillas simples para usar el texto dentro de '...' en SQL
     return x.replace("\\", "\\\\").replace("'", "\\'")
 
 
@@ -69,7 +90,9 @@ for (schema, nombre), (capa, fuente, comentario) in TABLAS.items():
     if not spark.catalog.tableExists(t):
         resultado.append((t, "no existe (aún)"))
         continue
+    # 1. Comentario de la tabla
     spark.sql(f"COMMENT ON TABLE {t} IS '{sql_txt(comentario)}'")
+    # 2. Etiquetas de clasificación
     try:
         spark.sql(f"""ALTER TABLE {t} SET TAGS (
             'clasificacion' = 'publico', 'capa' = '{capa}', 'fuente' = '{fuente}',
@@ -77,6 +100,7 @@ for (schema, nombre), (capa, fuente, comentario) in TABLAS.items():
         estado = "comentario + etiquetas"
     except Exception as exc:  # noqa: BLE001
         estado = f"comentario (etiquetas no disponibles: {type(exc).__name__})"
+    # 3. Comentarios de las columnas clave
     for col, txt in COMENTARIOS_COLUMNA.get((schema, nombre), {}).items():
         spark.sql(f"ALTER TABLE {t} ALTER COLUMN {col} COMMENT '{sql_txt(txt)}'")
     resultado.append((t, estado))
@@ -85,23 +109,35 @@ display(spark.createDataFrame(resultado, "tabla string, gobierno string"))
 
 # COMMAND ----------
 
-# MAGIC %md ## Exposición mínima para el dashboard
-# MAGIC La app de Streamlit se ejecuta con su propio *service principal*. Se le da acceso de solo
-# MAGIC lectura a `gold`, `ops` y `ref`, y **ninguno** a `bronze` ni `quarantine`.
+# MAGIC %md
+# MAGIC ## Exposición mínima para el dashboard
+# MAGIC ### Celda 2 · Permisos de solo lectura para la app
+# MAGIC La app de Streamlit se ejecuta con su propio *service principal* (un "usuario técnico" que
+# MAGIC no es una persona). Principio de **mínimo privilegio**: se le da acceso de solo lectura a
+# MAGIC `gold`, `ops` y `ref`, y **ninguno** a `bronze` ni `quarantine` (datos sin validar).
+# MAGIC 1. Concede `USE CATALOG` (poder entrar en el catálogo).
+# MAGIC 2. Concede `USE SCHEMA` + `SELECT` (entrar y leer) en gold, ops y ref.
+# MAGIC 3. Muestra los permisos de los cinco esquemas para comprobarlo.
+# MAGIC
 # MAGIC Escribe su identificador en el widget `principal_app` y vuelve a ejecutar esta celda.
+# MAGIC Si el widget está vacío, la celda no hace nada.
+# MAGIC
 # MAGIC **Ojo (INC-06):** el identificador correcto es el que Unity Catalog muestra para la app
 # MAGIC (coincide con el *App ID* de la ficha de la app), no el nombre visible. Verifica siempre con
 # MAGIC `SHOW GRANTS ON CATALOG tfm_embalses`: un GRANT sin error no garantiza el permiso. Alternativa
-# MAGIC fiable: Catalog Explorer › Permissions › Grant, buscando la app por su nombre.
+# MAGIC fiable (la que se usó finalmente): Catalog Explorer › Permissions › Grant, buscando la app por su nombre.
 
 # COMMAND ----------
 
 if PRINCIPAL_APP:
     p = f"`{PRINCIPAL_APP}`"
+    # 1. Entrar en el catálogo
     spark.sql(f"GRANT USE CATALOG ON CATALOG {CATALOG} TO {p}")
+    # 2. Entrar y leer solo en gold, ops y ref
     for schema in ("gold", "ops", "ref"):
         spark.sql(f"GRANT USE SCHEMA, SELECT ON SCHEMA {CATALOG}.{schema} TO {p}")
     print(f"Permisos de lectura concedidos a {PRINCIPAL_APP} en gold, ops y ref")
+    # 3. Comprobación: bronze y quarantine no deben mostrar permisos para la app
     for schema in ("gold", "ops", "ref", "bronze", "quarantine"):
         print(f"\n--- {schema} ---")
         display(spark.sql(f"SHOW GRANTS ON SCHEMA {CATALOG}.{schema}"))
