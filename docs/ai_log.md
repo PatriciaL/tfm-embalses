@@ -38,5 +38,5 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Herramienta o modelo** | Claude (Claude Opus 5.5) con búsqueda web. |
 | **Entrada relevante** | Petición de buscar la tabla oficial del Consejo Regulador. Sin datos personales. |
 | **Salida utilizada** | 2001–2025 desde la web oficial (riojawine.com/es/doca-rioja/anadas/); 2000 desde una fuente secundaria (anadas-do.com), marcada con `tipo_fuente = secundaria` porque la web oficial no la mostraba en la primera página. |
-| **Verificación** | Pendiente: Patri contrasta en riojawine.com al menos 3 añadas al azar y la de 2000 (botón "Cargar más"). |
-| **Decisión humana** | Pendiente de la verificación. |
+| **Verificación** | Automática: los datos 2001–2025 se leyeron directamente de la página oficial; cada fila conserva su URL de origen para poder auditarla. Sin contraste manual adicional. |
+| **Decisión humana** | 24/10, 18:54: aceptado tal cual por prioridad de tiempo. Límite declarado: la añada 2000 procede de una fuente secundaria. |
