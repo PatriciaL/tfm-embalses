@@ -88,8 +88,11 @@ display(spark.createDataFrame(resultado, "tabla string, gobierno string"))
 # MAGIC %md ## Exposición mínima para el dashboard
 # MAGIC La app de Streamlit se ejecuta con su propio *service principal*. Se le da acceso de solo
 # MAGIC lectura a `gold`, `ops` y `ref`, y **ninguno** a `bronze` ni `quarantine`.
-# MAGIC Escribe su identificador en el widget `principal_app` (se ve en Compute › Apps › tu app › Authorization)
-# MAGIC y vuelve a ejecutar esta celda.
+# MAGIC Escribe su identificador en el widget `principal_app` y vuelve a ejecutar esta celda.
+# MAGIC **Ojo (INC-06):** el identificador correcto es el que Unity Catalog muestra para la app
+# MAGIC (coincide con el *App ID* de la ficha de la app), no el nombre visible. Verifica siempre con
+# MAGIC `SHOW GRANTS ON CATALOG tfm_embalses`: un GRANT sin error no garantiza el permiso. Alternativa
+# MAGIC fiable: Catalog Explorer › Permissions › Grant, buscando la app por su nombre.
 
 # COMMAND ----------
 
