@@ -17,6 +17,11 @@
 
 # COMMAND ----------
 
+# Reinicia Python para que la librería recién instalada se pueda importar
+dbutils.library.restartPython()
+
+# COMMAND ----------
+
 import datetime as dt
 import hashlib
 import io
