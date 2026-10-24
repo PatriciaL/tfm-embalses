@@ -20,6 +20,7 @@ Cada decisión con su motivo y su evidencia. Fuente de las secciones 2–3 de la
 | D-14 | 24/10 | Referencia DOCa: tabla oficial del Consejo Regulador (2001–2025) con columna `tipo_fuente`; 2000 de fuente secundaria, marcada | Trazabilidad del dato de referencia; el CSV de ejemplo heredado tenía 6 de 10 añadas mal | IA-003 |
 | D-15 | 24/10 | Filtro de cuenca: AMBITO_NOMBRE = "Ebro" (84 embalses) | La lista completa de ámbitos de MITECO confirma el nombre exacto y que no hay otro ámbito que lo contenga | E-06 |
 | D-16 | 24/10 | Job diario `tfm_embalses_diario` a las 07:37, 4 tareas en cadena con "All succeeded" | Operación desatendida y fechada; si falla un paso no se publica nada parcial | E-16 |
+| D-17 | 24/10 | Aceptar como límite que el linaje automático de Unity Catalog no enlaza tablas en los pasos con pandas (silver y campaña) | Reescribir esos pasos en Spark no compensa con el plazo; la trazabilidad por fila (_source, _ingest_ts, _run_id) y ops.run_log cubren el requisito | E-20 |
 
 ## Abiertas
 
