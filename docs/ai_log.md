@@ -51,3 +51,14 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Salida utilizada** | `pipeline/05_governance.py`, `app/app.py`, `app/app.yaml`, `app/requirements.txt` y `app/README.md`. |
 | **Verificación** | Gobierno: 14 tablas con comentario y etiquetas (E-18, E-19), linaje revisado con un límite detectado (E-20, E-21). Permisos: el GRANT por código no dejó permiso efectivo (INC-06); se verificó con `SHOW GRANTS` y se corrigió desde Catalog Explorer (E-25, E-26). App: despliegue correcto tras hacer público el repo (INC-05, E-24); revisión en navegador el 25/10 00:06: KPIs, gráfico de campañas frente a DOCa, reserva del Ebro y pestaña de salud (4 ejecuciones OK, 14 controles, 0 fallos) cargan con datos reales. |
 | **Decisión humana** | Aceptado. Mejora menor pendiente: la tabla de ejecuciones muestra horas en UTC. |
+
+## IA-005 · Borrador de la memoria
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 25/10/2026, 00:15–00:45. Redactar la memoria técnica (máx. 15 páginas) a partir de los registros del proyecto. |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) en claude.ai; documento Word generado con docx-js, diagrama de arquitectura con matplotlib. |
+| **Entrada relevante** | Guía del TFM, diagnóstico, decisiones, evidencias (E-01 a E-26), incidencias, registro de IA y dos capturas de la app aportadas por la autora. Petición de la autora: explicar para qué sirve el dashboard e incluir el stack y el rol de la IA en cada sección. |
+| **Salida utilizada** | Borrador de 11 páginas con 11 figuras con pie, siguiendo la estructura de la guía (§5); recuadro "Stack · Rol de la IA · Decisión humana" en cada sección. Las horas sin IA son una estimación declarada y el coste de la suscripción es un supuesto pendiente de confirmar. |
+| **Verificación** | Renderizado a PDF y revisión visual de todas las páginas. Pendiente: revisión de contenido por la autora y completar el historial de ejecuciones (tabla 5.3) con las cargas del 25, 27–28 y 29/10. |
+| **Decisión humana** | Pendiente. |
