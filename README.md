@@ -35,6 +35,8 @@ MITECO ZIP ┘   + volumen raw por fecha          └─ silver.clima_logrono �
 | `pipeline/02_silver_transform.py` | Coma decimal, `Ip`, deduplicación por ingesta más reciente, aceptado / revisión / rechazado |
 | `pipeline/03_quality_checks.py` | Controles críticos (bloquean gold) y avisos, guardados en `ops.quality_results` |
 | `pipeline/04_gold_publish.py` | Reserva del Ebro, indicador de campaña vitícola (Winkler), KPIs |
+| `pipeline/05_governance.py` | Comentarios, etiquetas de clasificación y permisos de solo lectura para la app (una vez) |
+| `app/` | Dashboard Streamlit como Databricks App: campaña frente a DOCa y salud del pipeline |
 
 Las transformaciones están en `pipeline/transforms.py` (pandas puro) y se prueban en local.
 
@@ -49,6 +51,8 @@ Las transformaciones están en `pipeline/transforms.py` (pandas puro) y se prueb
 3. Ejecuta `pipeline/00_setup.py` una vez.
 4. Ejecuta en orden `01` → `02` → `03` → `04`, o crea el Job descrito en [`jobs/job_tfm_embalses.md`](jobs/job_tfm_embalses.md).
    La primera ejecución carga el histórico (AEMET desde 2000, MITECO desde 1988) y tarda unos minutos.
+
+5. Ejecuta `pipeline/05_governance.py` y despliega la app (ver [`app/README.md`](app/README.md)).
 
 **Pruebas en local:**
 
