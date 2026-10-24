@@ -28,4 +28,15 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Verificación** | Hecha: las 11 pruebas pasan en local (`pytest`), cubriendo coma decimal, `Ip`, control de esquema, estados de calidad, deduplicación, idempotencia y Winkler; todos los notebooks compilan. Pendiente: primera ejecución en Databricks (los notebooks no se han ejecutado todavía en la plataforma). |
 | **Decisión humana** | Pendiente de la revisión de Patri tras la primera ejecución. |
 
-**Hallazgo lateral:** las calificaciones DOCa del CSV de ejemplo heredado no coinciden con las publicadas (2021 y 2022 figuran como "Muy Buena" en prensa; el CSV heredado decía "Excelente" y "Buena"). Refuerza el hallazgo 1: los datos de ejemplo eran inventados.
+**Hallazgo lateral:** las calificaciones DOCa del CSV de ejemplo heredado no coinciden con la tabla oficial del Consejo Regulador: **6 de sus 10 añadas (2015–2024) son erróneas** (2016, 2017, 2018, 2019, 2021 y 2022). Refuerza el hallazgo 1: los datos de ejemplo eran inventados.
+
+## IA-003 · Calificaciones oficiales DOCa Rioja
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 24/10/2026, 18:55. Completar `ref/doca_calificaciones.csv` con la calificación oficial de cada añada. |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) con búsqueda web. |
+| **Entrada relevante** | Petición de buscar la tabla oficial del Consejo Regulador. Sin datos personales. |
+| **Salida utilizada** | 2001–2025 desde la web oficial (riojawine.com/es/doca-rioja/anadas/); 2000 desde una fuente secundaria (anadas-do.com), marcada con `tipo_fuente = secundaria` porque la web oficial no la mostraba en la primera página. |
+| **Verificación** | Pendiente: Patri contrasta en riojawine.com al menos 3 añadas al azar y la de 2000 (botón "Cargar más"). |
+| **Decisión humana** | Pendiente de la verificación. |

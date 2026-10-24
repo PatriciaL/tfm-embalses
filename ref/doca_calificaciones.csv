@@ -1,8 +1,31 @@
-# Calificación oficial de añadas del Consejo Regulador DOCa Rioja.
-# Dato de referencia mantenido a mano (cambia una vez al año). Cada fila con su fuente.
-# Valores admitidos: Excelente, Muy Buena, Buena, Normal, Mediana, Deficiente
-# PENDIENTE: completar 2000-2020, 2024 y 2025 desde la fuente oficial (riojawine.com) y verificar las ya cargadas.
-anyada,calificacion,fuente_url,fecha_consulta
-2021,Muy Buena,https://www.agronewscastillayleon.com/rioja-califica-como-muy-buena-su-cosecha-de-2021,2026-10-24
-2022,Muy Buena,https://www.agronewscastillayleon.com/rioja-califica-como-muy-buena-su-cosecha-de-2022/,2026-10-24
-2023,Muy Buena,https://forbes.es/economia/478880/el-consejo-regulador-de-la-doca-rioja-califica-como-muy-buena-su-cosecha-de-2023/,2026-10-24
+# Calificación de añadas de la DOCa Rioja.
+# Dato de referencia mantenido a mano (cambia una vez al año, tras la calificación oficial de primavera).
+# 2001-2025: tabla oficial del Consejo Regulador (riojawine.com), consultada el 24/10/2026.
+# 2000: la web oficial no la muestra en la primera página; se toma de una fuente secundaria y se marca como tal.
+anyada,calificacion,tipo_fuente,fuente_url,fecha_consulta
+2000,Buena,secundaria,https://www.anadas-do.com/54/anadas-denominacion-de-origen-rioja/,2026-10-24
+2001,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2002,Buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2003,Buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2004,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2005,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2006,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2007,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2008,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2009,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2010,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2011,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2012,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2013,Buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2014,Buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2015,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2016,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2017,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2018,Buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2019,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2020,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2021,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2022,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2023,Muy buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2024,Buena,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24
+2025,Excelente,oficial,https://riojawine.com/es/doca-rioja/anadas/,2026-10-24

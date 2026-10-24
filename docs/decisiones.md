@@ -17,6 +17,7 @@ Cada decisión con su motivo y su evidencia. Fuente de las secciones 2–3 de la
 | D-11 | 24/10 | Descarga de MITECO por tramos HTTP Range de 4 MiB | Free Edition corta las respuestas a 8 MiB; el servidor admite Range | INC-02, E-03 |
 | D-12 | 24/10 | MITECO: usar la tabla `T_Datos Embalses 1988-2026` filtrada por cuenca (AMBITO_NOMBRE = Ebro); volumen = AGUA_ACTUAL, capacidad = AGUA_TOTAL. Carga histórica completa una vez y después incremental por FECHA | Datos reales y semanales hasta el 20/10/2026; la próxima actualización (~27/10) cae dentro del plazo del TFM y servirá como carga real observada | E-05 |
 | D-13 | 24/10 | Normalizar la coma decimal en silver para MITECO y AEMET | Confirmado con datos reales: ambas fuentes usan coma decimal (hallazgo 5) | E-05 |
+| D-14 | 24/10 | Referencia DOCa: tabla oficial del Consejo Regulador (2001–2025) con columna `tipo_fuente`; 2000 de fuente secundaria, marcada | Trazabilidad del dato de referencia; el CSV de ejemplo heredado tenía 6 de 10 añadas mal | IA-003 |
 
 ## Abiertas
 
