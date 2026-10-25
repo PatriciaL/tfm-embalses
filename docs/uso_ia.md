@@ -1,6 +1,6 @@
 # Cómo se ha trabajado con la IA · TFM Embalses
 
-Complementa el registro de uso de IA (`ai_log.md`, IA-001 a IA-007). El registro dice **qué** se hizo con IA en cada paso; este documento dice **con qué entorno, con qué reglas y con qué controles** se trabajó.
+Complementa el registro de uso de IA (`ai_log.md`, IA-001 a IA-008). El registro dice **qué** se hizo con IA en cada paso; este documento dice **con qué entorno, con qué reglas y con qué controles** se trabajó.
 
 ---
 
@@ -24,6 +24,7 @@ Una *skill* es un paquete de instrucciones que la IA carga para hacer bien un ti
 |---|---|---|
 | Skill de la plataforma | **docx** (documentos Word) | Generar la memoria con estilos, tablas, figuras numeradas y pies de página correctos |
 | Skill de la plataforma | **Navegador integrado** | Uso del panel de navegador, sus permisos y límites |
+| Skill propia | **`pipeline-datos-controlado`** (`skills/`) | El método de este TFM convertido en skill reutilizable: principios, fases, controles, notas de Databricks Free Edition y checklist. Ver §8 |
 | Instrucciones del proyecto | **`CLAUDE.md`** del repositorio | Las reglas que la IA debe cumplir siempre en este repo (ver abajo) |
 | Contexto del proyecto | **`tfm-requisitos.md`** | La guía del TFM convertida a Markdown: la IA comprueba cada entregable contra ella |
 | Contexto del proyecto | **`decisiones.md`, `evidencias.md`, `ai_log.md`** | Memoria de trabajo: qué se decidió, qué se probó y qué falta |
@@ -99,3 +100,18 @@ Es la parte más útil para valorar el uso de la IA: muestra que las salidas no 
 | Búsqueda y lectura de fuentes públicas | Validar los resultados y decidir qué se acepta |
 | Borradores de documentación y memoria | Revisar, corregir y aportar su voz |
 | Proponer soluciones a las incidencias | Detectar las incidencias en la plataforma y aplicar la solución |
+
+## 8. Skill propia: `pipeline-datos-controlado`
+
+El método seguido en este TFM se ha empaquetado como una skill reutilizable (`skills/pipeline-datos-controlado/SKILL.md`), para aplicarlo en otros proyectos sin volver a explicarlo a la IA.
+
+| Contenido | Origen en el TFM |
+|---|---|
+| 6 principios no negociables | Reglas de `CLAUDE.md` y hallazgos del diagnóstico |
+| 9 fases (diagnóstico → documentación) | Fases F0–F8 del plan del TFM |
+| Catálogo de controles críticos y avisos | Notebook `03_quality_checks` |
+| Cómo trabajar con IA en el flujo | Guía del TFM (§8) y este documento |
+| Notas de Databricks Free Edition | Incidencias INC-02, INC-03, INC-05, INC-06 y decisión D-17 |
+| Checklist de cierre | Guía del TFM (§10) |
+
+Es el principal resultado reutilizable del trabajo con IA: la experiencia del proyecto queda como instrucción que cualquier sesión futura puede cargar.

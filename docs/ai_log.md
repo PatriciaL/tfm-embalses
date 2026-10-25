@@ -84,3 +84,14 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Salida utilizada** | `docs/uso_ia.md` (entorno, skills, reglas de `CLAUDE.md`, prompts clave literales, límites, técnicas de verificación, errores de la IA y reparto de papeles) y nueva sección 7 de la memoria «Cómo se ha trabajado con la IA»; las secciones siguientes pasan a ser 8 y 9. Se actualiza el apartado 6.3 con el contraste de Winkler: el informe de índices bioclimáticos de AEMET da a Logroño 2.748 grados-día en 2021 (1 abr–30 sep, base 10 ºC), lo que hace plausibles los valores obtenidos. |
 | **Verificación** | Cada caso de error citado se comprobó contra `evidencias.md` (INC-02, INC-03, INC-05, INC-06). Memoria regenerada y revisada visualmente: 12 páginas. Fuente del contraste: repositorio.aemet.es (Indices_bioclimaticos_CAL2024.pdf). |
 | **Decisión humana** | Pendiente: revisión de la autora (en especial, que los prompts citados la representan). Resuelve la verificación pendiente de Winkler de IA-002. |
+
+## IA-008 · Skill reutilizable `pipeline-datos-controlado`
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 25/10/2026, 08:05–08:20. Convertir el método del TFM en una skill reutilizable. |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) en la app de Claude; propuesta de skill para añadirla a la cuenta de la autora. |
+| **Entrada relevante** | Petición de la autora («sí, hazla») tras proponer una skill propia. Contexto: `CLAUDE.md`, notebooks, decisiones, incidencias y guía del TFM. Sin secretos ni datos personales. |
+| **Salida utilizada** | `skills/pipeline-datos-controlado/SKILL.md`: principios, 9 fases, catálogo de controles, trabajo con IA, notas de Databricks Free Edition y checklist. Se añade a `docs/uso_ia.md` (§2 y §8) y a la sección 7 de la memoria. |
+| **Verificación** | Cada nota de plataforma corresponde a una incidencia o decisión registrada (INC-02, INC-03, INC-05, INC-06, D-17); los controles coinciden con los del notebook 03. Pendiente: probarla en un caso nuevo. |
+| **Decisión humana** | Pendiente: guardarla desde la tarjeta de propuesta y revisarla. |
