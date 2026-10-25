@@ -95,3 +95,14 @@ Campos según la guía del TFM (§7). Solo se registran los intercambios que afe
 | **Salida utilizada** | `skills/pipeline-datos-controlado/SKILL.md`: principios, 9 fases, catálogo de controles, trabajo con IA, notas de Databricks Free Edition y checklist. Se añade a `docs/uso_ia.md` (§2 y §8) y a la sección 7 de la memoria. |
 | **Verificación** | Cada nota de plataforma corresponde a una incidencia o decisión registrada (INC-02, INC-03, INC-05, INC-06, D-17); los controles coinciden con los del notebook 03. Pendiente: probarla en un caso nuevo. |
 | **Decisión humana** | Pendiente: guardarla desde la tarjeta de propuesta y revisarla. |
+
+## IA-009 · Revisión de la memoria: ROI y voz de la autora
+
+| Campo | Contenido |
+|---|---|
+| **Fecha y tarea** | 25/10/2026, 10:10–19:50. Cerrar los supuestos del ROI e incorporar la voz de la autora en la introducción y las conclusiones. |
+| **Herramienta o modelo** | Claude (Claude Opus 5.5) en la app de Claude, con búsqueda web. |
+| **Entrada relevante** | Respuestas de la autora: plan Claude Pro, sumar las sesiones posteriores a las horas con IA, tarifa de 45 €/h, y sus respuestas a cinco preguntas sobre motivación, aprendizajes, uso de la IA y siguientes pasos. Sin datos personales sensibles. |
+| **Salida utilizada** | Sección 8: coste de herramienta ≈ 22 €/mes (Claude Pro, 20 USD + IVA), horas con IA 9,0 h frente a 46,7 h estimadas sin IA, beneficio neto ≈ 6.698 €/año. Sección 1: párrafo «Por qué este caso». Sección 9: siguiente paso de predicción y apartado «Lo que me llevo», redactados en primera persona a partir de las respuestas literales de la autora. Memoria: 13 páginas. |
+| **Verificación** | Precio de Claude Pro contrastado en el centro de ayuda de Anthropic (20 USD/mes más impuestos; el importe en euros se confirma con la factura). Aritmética del ROI recalculada en código. Revisión visual del PDF. |
+| **Decisión humana** | Pendiente: la autora revisa que los textos en primera persona la representan. |
