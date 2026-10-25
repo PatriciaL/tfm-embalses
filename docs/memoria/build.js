@@ -198,7 +198,7 @@ add(H1("5. Operación"),
   table(["Fecha", "Ejecución", "AEMET", "MITECO", "Calidad", "Resultado"], [
     ["24/10 18:58–19:15", "Manual, por pasos (carga histórica)", "9.790 días", "125.127 filas", "14/14", "OK"],
     ["24/10 19:26", "Job, lanzado a mano", "Días nuevos", "Sin cambios", "14/14", "OK (6 min 15 s)"],
-    ["25/10 07:37", "Job programado", "[completar]", "[completar]", "[completar]", "[completar]"],
+    ["25/10 07:37", "Job programado (primera desatendida)", "OK (último dato 21/10)", "Sin cambios", "14/14, 0 avisos", "OK (7 min 23 s)"],
     ["27–28/10", "Job programado · publicación semanal de MITECO", "[completar]", "[nuevo fichero]", "[completar]", "[completar]"],
     ["29/10 07:37", "Job programado (última antes de entregar)", "[completar]", "[completar]", "[completar]", "[completar]"],
   ], [1500, 2500, 1300, 1500, 1100, CW - 7900]),
