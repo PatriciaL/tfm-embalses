@@ -30,6 +30,7 @@ Cada captura se guarda en Drive › TFM Embalses › 03_Evidencias_capturas con 
 | E-24 | `2026-10-24_app_despliegue_ok.png` | 24/10/2026 23:48 | Resolución de INC-05: con el repositorio público, el despliegue del commit `c9c3f70` completa los 6 pasos en 15 s (código descargado, especificación cargada, paquetes instalados, app construida y arrancada). Debajo queda el intento fallido anterior como rastro. | 5 · Operación |
 | E-25 | `2026-10-25_gobierno_grants_catalogo.png` | 25/10/2026 00:00 | Verificación con `SHOW GRANTS`: la identidad de la app en Unity Catalog es `e8c5141f-1f38-…` (el *App ID*), ahora con `USE CATALOG` en `tfm_embalses`. Explica INC-06: el GRANT anterior usó otro identificador (`f5ea971d-…`) y no dejó permiso efectivo. | 4 · Gobierno |
 | E-26 | `2026-10-25_gobierno_grants_gold_ops.png` | 25/10/2026 00:01 | `SHOW GRANTS` en los esquemas `gold` y `ops`: la app (`e8c5141f-…`) tiene `USE SCHEMA` y `SELECT`, lo justo para leer los indicadores y la salud del pipeline. | 4 · Gobierno |
+| E-27 | `2026-10-25_job_ejecucion_programada.png` | 25/10/2026 07:37 | Primera ejecución **desatendida** del Job `tfm_embalses_diario`: lanzada «By scheduler» a las 07:37 (run 877688566878390), 7 min 23 s, las 4 tareas (bronze, silver, calidad, gold) correctas. Debajo, el historial del 24/10: una ejecución manual correcta y dos canceladas a mano durante las pruebas (UserCanceled). | 5 · Operación |
 
 ## Incidencias
 
