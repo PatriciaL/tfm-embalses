@@ -278,7 +278,7 @@ add(H1("8. Justificación cuantitativa: horas y costes"),
     ["**Total**", "**47,2 h**", "**14,5 h**"],
   ], [4300, 2300, CW - 6600]),
   P(""),
-  P("**Origen de las cifras.** Las horas con IA salen de las marcas de tiempo de las sesiones de trabajo; su reparto por bloque es aproximado e incluye la revisión humana (ejecutar, comprobar, decidir). El seguimiento de la operación cuesta lo mismo en los dos modos, porque lo hace la autora. La revisión final de la memoria (5 h) la hizo la autora sin asistente y cuenta íntegra en el modo con IA. La columna sin IA es una **estimación** de la autora para una profesional con experiencia en el stack: **no hay línea base observada**. Para confirmarla habría que repetir una tarea equivalente sin asistente."),
+  P("**Origen de las cifras.** Las horas con IA salen de las marcas de tiempo de las sesiones de trabajo; su reparto por bloque es aproximado e incluye la revisión humana (ejecutar, comprobar, decidir). El seguimiento de la operación cuesta lo mismo en los dos modos, porque lo hace la autora. La revisión y redacción final de la memoria (5 h) es trabajo de la autora y cuenta íntegra en el modo con IA. La columna sin IA es una **estimación** de la autora para una profesional con experiencia en el stack: **no hay línea base observada**. Para confirmarla habría que repetir una tarea equivalente sin asistente."),
   table(["Concepto", "Valor", "Tipo"], [
     ["Horas ahorradas por ejecución (47,2 − 14,5)", "32,7 h", "Estimación"],
     ["Tarifa horaria", "45 €/h", "Supuesto declarado"],
