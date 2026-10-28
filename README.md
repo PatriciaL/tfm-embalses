@@ -3,6 +3,8 @@
 **Trabajo Fin de Máster · Jxpert IA Aplicada · Track 9 · IA aplicada a Data Management**
 Autora: Patricia Lafuente Estrada · Vía caso (proyecto propio)
 
+**Memoria:** [`docs/memoria/TFM_Lafuente_Agua_y_vinedo_La_Rioja.pdf`](docs/memoria/TFM_Lafuente_Agua_y_vinedo_La_Rioja.pdf) · **Anexos:** [`docs/TFM_Lafuente_Anexos.pdf`](docs/TFM_Lafuente_Anexos.pdf)
+
 > **Nota para la revisión.** El dashboard es una Databricks App en Free Edition, que **se detiene sola a las 24 h**.
 > Si el enlace muestra la app parada, hay que pulsar *Start* en Compute › Apps (tarda 1–2 minutos); las capturas
 > de la memoria y `docs/evidencias.md` (E-24 a E-32) documentan su funcionamiento. El Job diario sigue
