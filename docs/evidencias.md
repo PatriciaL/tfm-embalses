@@ -1,5 +1,7 @@
 # Índice de evidencias · TFM Embalses
 
+> Las capturas están en la carpeta [`docs/evidencias/`](evidencias/) con el mismo nombre de fichero que en la tabla.
+
 Cada captura se guarda en Drive › TFM Embalses › 03_Evidencias_capturas con el nombre indicado. El pie responde a lo que pide la guía (§5): qué se ve, qué demuestra y en qué fecha o ejecución se obtuvo.
 
 | # | Archivo | Fecha | Pie | Sección de la memoria |
