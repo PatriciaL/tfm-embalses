@@ -1,7 +1,12 @@
 # TFM · Agua y viñedo en La Rioja
 
 **Trabajo Fin de Máster · Jxpert IA Aplicada · Track 9 · IA aplicada a Data Management**
-Autora: Patricia Lafuente · Vía caso (proyecto propio)
+Autora: Patricia Lafuente Estrada · Vía caso (proyecto propio)
+
+> **Nota para la revisión.** El dashboard es una Databricks App en Free Edition, que **se detiene sola a las 24 h**.
+> Si el enlace muestra la app parada, hay que pulsar *Start* en Compute › Apps (tarda 1–2 minutos); las capturas
+> de la memoria y `docs/evidencias.md` (E-24 a E-32) documentan su funcionamiento. El Job diario sigue
+> ejecutándose aunque la app esté parada.
 
 Pregunta de negocio: **¿cómo están las condiciones hídricas y climáticas de la campaña en La Rioja
 comparadas con añadas anteriores?**
